@@ -1,0 +1,70 @@
+<?php
+/**
+ * BelVG LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ *
+ * **************************************
+ *         MAGENTO EDITION USAGE NOTICE *
+ * ***************************************
+ * This package designed for Magento COMMUNITY edition
+ * BelVG does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * BelVG does not provide extension support in case of
+ * incorrect edition usage.
+ * **************************************
+ *         DISCLAIMER   *
+ * ***************************************
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future.
+ * ****************************************************
+ * @category    Belvg
+ * @package     Belvg_Storelocator
+ * @copyright   Copyright (c) 2010 - 2015 BelVG LLC. (http://www.belvg.com)
+ * @license     http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ */
+?>
+
+<div class="storelocator-left-sidebar">
+    <?php if ($this->canShowResult()): ?>
+        <?php $num = 1; ?>
+        <ul class="location-result">
+            <?php foreach ($this->getCollection() as $_location): ?>
+                <li class="location <?php echo ($_location->getFavorite()) ? 'favorite' : ''; ?>"
+                    style="padding: 5px 0px 5px 0px;">
+                    <div class="title" id="marker<?php echo $num; ?>"
+                         rel="<?php echo $num; ?>"><?php echo $_location->getTitle(); ?></div>
+                    <?php if ($_location->getIcon()): ?>
+                        <div class="icon">
+                            <img src="<?php echo $this->helper('storelocator/icon')->resize($_location, 30, 30); ?>"
+                                 width="30" height="30" alt="<?php echo $this->escapeHtml($_location->getTitle()); ?>"/>
+                        </div>
+                    <?php endif; ?>
+                    <div class="addition">
+<!--                        <div>--><?php //echo $this->__("Distance"); ?>
+<!--                            :<span>--><?php //echo $this->helper('storelocator')->distanceFormater($_location->getDistance()); ?><!--</span>-->
+<!--                        </div>-->
+                        <?php if ($this->helper('storelocator')->getConfigValue('distance')): ?>
+                            <div class="distance">
+                                <a href="javascript:void(0);"
+                                   rel="<?php echo $num; ?>"><?php echo $this->__('Show Distance'); ?></a>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($this->helper('storelocator')->getConfigValue('directions')): ?>
+                            <div class="direction">
+                                <a href="javascript:void(0);"
+                                   rel="<?php echo $num; ?>"><?php echo $this->__('Show Direction'); ?></a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </li>
+                <?php $num++; ?>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</div>

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <store translate="title">
+            <title>Store Locator</title>
+            <sort_order>65</sort_order>
+            <children>
+                <manage translate="title">
+                    <title>Manage Stores</title>
+                    <action>adminhtml/stores</action>
+                    <sort_order>1</sort_order>
+                </manage>
+                <import translate="title">
+                    <title>Import Stores</title>
+                    <action>adminhtml/tools</action>
+                    <sort_order>2</sort_order>
+                </import>
+                <migrate>
+                    <title>Migrate from Stores 1.0</title>
+                    <action>adminhtml/migrate</action>
+                    <sort_order>3</sort_order>
+                </migrate>
+            </children>
+        </store>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <storelocator translate="title">
+                                        <title>Store Locator</title>
+                                    </storelocator>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <store translate="title">
+                        <title>Store Locator</title>
+                        <sort_order>65</sort_order>
+                        <children>
+                            <manage translate="title">
+                                <title>Manage Stores</title>
+                                <action>adminhtml/stores</action>
+                                <sort_order>1</sort_order>
+                                <children>
+                                    <save translate="title">
+                                        <title>Save</title>
+                                        <sort_order>1</sort_order>
+                                    </save>
+                                    <edit translate="title">
+                                        <title>Edit</title>
+                                        <sort_order>2</sort_order>
+                                    </edit>
+                                    <new translate="title">
+                                        <title>Create</title>
+                                        <sort_order>3</sort_order>
+                                    </new>
+                                    <delete translate="title">
+                                        <title>Delete</title>
+                                        <sort_order>4</sort_order>
+                                    </delete>
+                                </children>
+                            </manage>
+                            <import translate="title">
+                                <title>Import Stores</title>
+                                <action>adminhtml/tools</action>
+                                <sort_order>2</sort_order>
+                                <children>
+                                    <import translate="title">
+                                        <title>Import</title>
+                                        <sort_order>1</sort_order>
+                                    </import>
+                                </children>
+                            </import>
+                            <migrate translate="title">
+                                <title>Migrate from Stores 1.0</title>
+                                <action>adminhtml/migrate</action>
+                                <sort_order>3</sort_order>
+                                <children>
+                                    <import translate="title">
+                                        <title>Migrate</title>
+                                        <sort_order>1</sort_order>
+                                    </import>
+                                </children>
+                            </migrate>
+                        </children>
+                    </store>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

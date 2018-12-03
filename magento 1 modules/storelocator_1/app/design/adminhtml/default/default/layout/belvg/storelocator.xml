@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+/**
+* BelVG LLC.
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the EULA
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+*
+* **************************************
+*         MAGENTO EDITION USAGE NOTICE *
+* ***************************************
+* This package designed for Magento COMMUNITY edition
+* BelVG does not guarantee correct work of this extension
+* on any other Magento edition except Magento COMMUNITY edition.
+* BelVG does not provide extension support in case of
+* incorrect edition usage.
+* **************************************
+*         DISCLAIMER   *
+* ***************************************
+* Do not edit or add to this file if you wish to upgrade Magento to newer
+* versions in the future.
+* ****************************************************
+* @category    Belvg
+* @package     Belvg_Storelocator
+* @copyright   Copyright (c) 2010 - 2015 BelVG LLC. (http://www.belvg.com)
+* @license     http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+*/
+-->
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>belvg/storelocator/validation.js</script></action>
+        </reference>
+    </default>
+
+    <adminhtml_stores_index>
+        <reference name="content">
+            <block type="storelocator/adminhtml_store" name="store"/>
+        </reference>
+    </adminhtml_stores_index>
+
+    <adminhtml_stores_grid>
+        <block type="storelocator/adminhtml_store_grid" name="root"/>
+    </adminhtml_stores_grid>
+    Bundesland/Kanton
+
+    <adminhtml_stores_new>
+        <update handle="storelocator/adminhtml_store_edit"/>
+    </adminhtml_stores_new>
+
+    <adminhtml_stores_edit>
+        <reference name="content">
+            <block type="storelocator/adminhtml_store_edit" name="store_edit"/>
+        </reference>
+        <reference name="left">
+            <block type="storelocator/adminhtml_store_edit_tabs" name="store_edit_tabs">
+                <block type="storelocator/adminhtml_store_edit_tab_main" name="store_edit_tab_main">
+                    <block type="storelocator/adminhtml_store_edit_tab_product" name="form_after"
+                           template="belvg/storelocator/products.phtml"/>
+                </block>
+                <block type="storelocator/adminhtml_store_edit_tab_media" name="store_edit_tab_media"/>
+                <block type="storelocator/adminhtml_store_edit_tab_product" name="store_edit_tab_product"/>
+                <action method="addTab">
+                    <name>main_section</name>
+                    <block>store_edit_tab_main</block>
+                </action>
+                <action method="addTab">
+                    <name>media_section</name>
+                    <block>store_edit_tab_media</block>
+                </action>
+                <action method="addTab">
+                    <name>product_section</name>
+                    <block>store_edit_tab_product</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_stores_edit>
+
+    <adminhtml_tools_index>
+        <reference name="content">
+            <block type="storelocator/adminhtml_tools" name="stores.import"></block>
+        </reference>
+    </adminhtml_tools_index>
+
+    <adminhtml_migrate_index>
+        <reference name="content">
+            <block type="storelocator/adminhtml_migrate" name="stores.migrate"></block>
+        </reference>
+    </adminhtml_migrate_index>
+</layout>

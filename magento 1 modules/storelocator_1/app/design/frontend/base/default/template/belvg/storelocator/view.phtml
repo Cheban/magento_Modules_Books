@@ -1,0 +1,104 @@
+<?php
+/**
+ * BelVG LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ *
+ * **************************************
+ *         MAGENTO EDITION USAGE NOTICE *
+ * ***************************************
+ * This package designed for Magento COMMUNITY edition
+ * BelVG does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * BelVG does not provide extension support in case of
+ * incorrect edition usage.
+ * **************************************
+ *         DISCLAIMER   *
+ * ***************************************
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future.
+ * ****************************************************
+ * @category    Belvg
+ * @package     Belvg_Storelocator
+ * @copyright   Copyright (c) 2010 - 2015 BelVG LLC. (http://www.belvg.com)
+ * @license     http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ */
+
+/** @var $this Belvg_Storelocator_Block_Storelocator */
+/** @var $this Belvg_Storelocator_Block_Storelocator */
+/** @var $_helper Belvg_Storelocator_Helper_Data */
+
+$_helper = $this->helper('storelocator');
+?>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<?php echo $_helper->getGoogleKey(); ?>&v=3&sensor=<?php echo ($_helper->getCanAutoDetectLocation()) ? 'true' : 'false'; ?><?php echo ($_helper->getUseLanguage()) ? '&language=' . $_helper->getLanguageCode() : '' ?>"></script>
+
+<div class="storelocator-content">
+    <!-- Customer of location Begin -->
+    <?php if ($this->canShowResult()): ?>
+        <?php echo $this->getChildHtml('storelocator.customer'); ?>
+    <?php endif; ?>
+    <!-- Customer of location End -->
+
+    <!-- List of location Begin -->
+    <?php if ($this->canShowResult()): ?>
+        <?php echo $this->getChildHtml('storelocator.items'); ?>
+    <?php endif; ?>
+    <!-- List of location End -->
+
+    <div class="storelocator-content-center">
+        <?php if ($this->getShowMap()): ?>
+            <?php if ($this->canShowResult()): ?>
+                <div id="map_canvas" style="height: 610px; width: 705px; float: none;"></div>
+                <?php echo $this->getChildHtml('storelocator_pager'); ?>
+            <?php else: ?>
+                <div class="storelocator-instructions"><?php echo $this->escapeHtml($this->__($_helper->getConfigValue('empty_result'))); ?></div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div class="storelocator-instructions"><?php echo $this->escapeHtml($this->__($_helper->getConfigValue('default_message'))); ?></div>
+        <?php endif; ?>
+    </div>
+</div>
+<script type="text/javascript">
+    Event.observe(window, 'load', function () {
+        $('storelocator_reset').observe('click', function (event) {
+            CurrentStoreLocator.reset($('searcLocationByProducts'));
+        });
+    });
+</script>
+<?php if ($this->canShowResult()): ?>
+    <script type="text/javascript">
+        Event.observe(window, 'load', function () {
+            if (CurrentStoreLocator.showItemLoadPage == '1') {
+
+                CurrentStoreLocator.load();
+
+                <?php foreach ($this->getCollection() as $_location): ?>
+                CurrentStoreLocator.createMarker(<?php echo $_location->getMarkerOptions() ?>);
+                <?php endforeach; ?>
+
+                CurrentStoreLocator.initMarkerClusterer();
+
+                //CurrentStoreLocator.centerMap();
+
+                $$('li .title').invoke('observe', 'click', function (event) {
+                    CurrentStoreLocator.selectLocation(this);
+                });
+
+                $$('li .addition .distance a').invoke('observe', 'click', function (event) {
+                    CurrentStoreLocator.getGoogleDistance(this);
+                });
+
+                $$('li .addition .direction a').invoke('observe', 'click', function (event) {
+                    CurrentStoreLocator.getGoogleDirection(this);
+                });
+            }
+        });
+    </script>
+<?php endif; ?>

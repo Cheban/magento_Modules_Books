@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <storelocator translate="label" module="storelocator">
+            <label>Store Locator</label>
+            <tab>belvg</tab>
+            <frontend_type>text</frontend_type>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <sort_order>40</sort_order>
+            <groups>
+                <settings translate="label">
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <comment>
+                        <![CDATA[
+                            <div style="padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+                            This module was developed by <a href="http://www.belvg.com" target="_blank">www.BelVG.com</a>.
+                            For docs & examples refer to the BelVG <a href="http://www.belvg.com" target="_blank">web site</a>.
+                            <br/>We have the largest selections of  <a href="http://store.belvg.com/extensions.html" target="_blank">extensions</a> and <a href="http://store.belvg.com/themes.html" target="_blank">themes</a> on Magento.
+                            </div>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <google_key>
+                            <label>Google Key</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </google_key>
+                        <route translate="label">
+                            <label>Page URL</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-path required-entry</validate>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </route>
+                        <title translate="label">
+                            <label>Page Title</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-length maximum-length-150 minimum-length-1 required-entry</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </title>
+                        <show_map translate="label">
+                            <label>Show map on page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </show_map>
+                        <use_language translate="label">
+                            <label>Enable language code</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </use_language>
+                        <language_code translate="label">
+                            <label>Language Code</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-alpha validate-length maximum-length-2 minimum-length-2 validate-no-space required-entry</validate>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                                <use_language>1</use_language>
+                            </depends>
+                        </language_code>
+                        <!--<google_zoom translate="label">-->
+                        <!--<label>Google Maps zoom level</label>-->
+                        <!--<frontend_type>select</frontend_type>-->
+                        <!--<source_model>storelocator/system_config_source_zoom</source_model>-->
+                        <!--<sort_order>7</sort_order>-->
+                        <!--<show_in_default>1</show_in_default>-->
+                        <!--<show_in_website>1</show_in_website>-->
+                        <!--<show_in_store>1</show_in_store>-->
+                        <!--<depends>-->
+                        <!--<enabled>1</enabled>-->
+                        <!--<show_map>1</show_map>-->
+                        <!--</depends>-->
+                        <!--</google_zoom>-->
+                        <google_zoom_marker translate="label">
+                            <label>Location marker zoom level</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>storelocator/system_config_source_zoom</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                                <show_map>1</show_map>
+                            </depends>
+                        </google_zoom_marker>
+                        <location_count translate="label">
+                            <label>Visible number of locations</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-greater-than-zero validate-digits validate-not-negative-number</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </location_count>
+                        <distance translate="label">
+                            <label>Show directions</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </distance>
+                        <directions translate="label">
+                            <label>Show distance</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </directions>
+                        <radius translate="label">
+                            <label>Radius Options</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-radius validate-no-space validate-max-value required-entry</validate>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </radius>
+                        <units translate="label">
+                            <label>Distance Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>storelocator/system_config_source_units</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </units>
+                        <default_message translate="label">
+                            <label>Default message</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-no-html-tags validate-length maximum-length-100 minimum-length-1 required-entry</validate>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </default_message>
+                        <empty_result translate="label">
+                            <label>No results message</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-no-html-tags validate-length maximum-length-100 minimum-length-1 required-entry</validate>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </empty_result>
+                    </fields>
+                </settings>
+                <dev>
+                    <label>For dev test</label>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <sort_order>2</sort_order>
+                    <comment>
+                        <![CDATA[
+                            <div style="padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+                            This module was developed by <a href="http://www.belvg.com" target="_blank">www.BelVG.com</a>.
+                            For docs & examples refer to the BelVG <a href="http://www.belvg.com" target="_blank">web site</a>.
+                            <br/>We have the largest selections of  <a href="http://store.belvg.com/extensions.html" target="_blank">extensions</a> and <a href="http://store.belvg.com/themes.html" target="_blank">themes</a> on Magento.
+                            </div>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </enabled>
+                        <override_ip>
+                            <label>Override IP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </override_ip>
+                    </fields>
+                </dev>
+            </groups>
+        </storelocator>
+    </sections>
+</config>

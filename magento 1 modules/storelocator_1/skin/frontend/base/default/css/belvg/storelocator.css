@@ -1,0 +1,39 @@
+.storelocator-toolbar{
+    padding: 0 0 10px;
+}
+.storelocator-toolbar input, .storelocator-toolbar select{
+    margin-right:5px;
+}
+*:first-child+html .storelocator-toolbar button{
+     margin-right:5px;
+}
+.storelocator-toolbar input.search-products{
+    width: 120px; 
+}
+.storelocator-toolbar input.search-address{
+    width: 280px;
+}
+.storelocator-left-sidebar{
+	float: left; 
+	width: 190px;
+	padding: 0 5px 0 0;
+}
+.storelocator-left-sidebar .favorite{
+    font-weight: bold;
+}
+.storelocator-content{
+    width:auto;
+}
+.storelocator-content-center{
+	overflow: hidden;
+	margin:0 0 0 190px;
+}
+.storelocator-content .pager{
+    height:17px;
+}
+.storelocator-content .pager a.next, .storelocator-content .pager a.previous{
+    text-decoration:none!important;
+}
+.storelocator-content .customer-info{
+    font-weight: bolder;
+}
